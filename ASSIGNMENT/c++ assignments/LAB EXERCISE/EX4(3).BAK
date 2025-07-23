@@ -1,0 +1,20 @@
+#include<iostream.h>
+#include<conio.h>
+
+int globalvar=100;
+
+void showscope()
+{
+	int globalvar=50;
+	cout<<"Inside function,local globalvar ="<<globalvar<<endl;
+}
+
+void main()
+{
+	clrscr();
+
+	cout<<"Outside function,globalvar="<<globalvar<<endl;
+	showscope();
+	cout<<"Back in main,globalvar ="<<globalvar;
+	getch();
+}
