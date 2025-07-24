@@ -54,16 +54,16 @@ void main() {
     Student s;
     Teacher t;
 
-    cout << "--- Enter Student Details ---\n";
+    cout <<"Enter Student Details\n";
     s.getStudent();
 
-    cout << "\n--- Enter Teacher Details ---\n";
+    cout <<"Enter Teacher Details\n";
     t.getTeacher();
 
-    cout << "\n--- Student Info ---\n";
+    cout <<"Student Info\n";
     s.showStudent();
 
-    cout << "\n--- Teacher Info ---\n";
+    cout <<"Teacher Info\n";
     t.showTeacher();
 
     getch();
