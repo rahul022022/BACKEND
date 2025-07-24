@@ -34,10 +34,18 @@ void main() {
     cin >> ch;
 
     switch(ch) {
-        case 1: cout << "Result = " << c.add(a, b); break;
-        case 2: cout << "Result = " << c.subtract(a, b); break;
-        case 3: cout << "Result = " << c.multiply(a, b); break;
-        case 4: cout << "Result = " << c.divide(a, b); break;
+        case 1: 
+                cout << "Result = " << c.add(a, b); 
+                break;
+        case 2: 
+                cout << "Result = " << c.subtract(a, b); 
+                break;
+        case 3: 
+                cout << "Result = " << c.multiply(a, b); 
+                break;
+        case 4: 
+                cout << "Result = " << c.divide(a, b); 
+                break;
         default: cout << "Invalid choice!";
     }
 
