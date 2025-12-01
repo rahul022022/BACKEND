@@ -1,0 +1,37 @@
+{% extends 'doctor/base.html' %}
+
+{% block content %}
+<h2>Doctor Locations</h2>
+<div id="map" style="height: 400px;"></div>
+
+<script>
+    function initMap() {
+        // Default center – Ahmedabad
+        var defaultCenter = {lat: 23.0225, lng: 72.5714};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            center: defaultCenter
+        });
+
+        // Doctors with latitude/longitude
+        var doctors = [
+            {% for doctor in doctors %}
+                {% if doctor.latitude and doctor.longitude %}
+                {lat: {{ doctor.latitude }}, lng: {{ doctor.longitude }}, name: "{{ doctor.name|escapejs }}", specialization: "{{ doctor.specialization|escapejs }}"},
+                {% endif %}
+            {% endfor %}
+        ];
+
+        doctors.forEach(function(doc) {
+            new google.maps.Marker({
+                position: {lat: doc.lat, lng: doc.lng},
+                map: map,
+                title: doc.name + " - " + doc.specialization
+            });
+        });
+    }
+</script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_API_KEY }}&callback=initMap"></script>
+{% endblock %}

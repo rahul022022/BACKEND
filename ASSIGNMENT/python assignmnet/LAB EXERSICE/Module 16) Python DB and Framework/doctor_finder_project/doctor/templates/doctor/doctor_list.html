@@ -1,0 +1,30 @@
+{% extends 'doctor/base.html' %}
+{% block content %}
+<h2>Doctor List</h2>
+{% if user.is_authenticated %}
+<button id="add-doctor-btn">Add Doctor (AJAX)</button>
+{% endif %}
+<ul id="doctor-list">
+    {% for doctor in doctors %}
+        <li>
+            <a href="{% url 'doctor:doctor_detail' doctor.pk %}">{{ doctor.name }} - {{ doctor.specialization }}</a>
+        </li>
+    {% empty %}
+        <li>No doctors found.</li>
+    {% endfor %}
+</ul>
+
+<div id="doctor-form-modal" class="hidden">
+    <form id="ajax-doctor-form">
+        {% csrf_token %}
+        <label>Name: <input type="text" name="name" required></label><br>
+        <label>Specialization: <input type="text" name="specialization" required></label><br>
+        <label>Location: <input type="text" name="location" required></label><br>
+        <label>Availability: <input type="text" name="availability" required></label><br>
+        <label>Email: <input type="email" name="email" required></label><br>
+        <label>Phone: <input type="text" name="phone" required></label><br>
+        <button type="submit">Save</button>
+        <button type="button" id="close-modal">Close</button>
+    </form>
+</div>
+{% endblock %}

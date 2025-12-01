@@ -1,0 +1,10 @@
+{% extends 'doctor/base.html' %}
+{% block content %}
+<h2>Patient Registration</h2>
+<form method="post" id="registration-form" onsubmit="return validateRegistrationForm();">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {{ profile_form.as_p }}
+    <button type="submit">Register</button>
+</form>
+{% endblock %}

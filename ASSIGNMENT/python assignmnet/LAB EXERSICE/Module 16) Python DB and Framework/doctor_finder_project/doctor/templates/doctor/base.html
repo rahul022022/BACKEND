@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor Finder</title>
+    <link rel="stylesheet" href="{% static 'doctor/css/style.css' %}">
+    <script src="{% static 'doctor/js/validation.js' %}"></script>
+    <script src="{% static 'doctor/js/ajax_crud.js' %}"></script>
+</head>
+<body>
+
+<header>
+    <div class="header-inner">
+        <h1>Doctor Finder</h1>
+        <nav>
+            <a href="{% url 'doctor:home' %}">Home</a>
+            <a href="{% url 'doctor:doctor_list' %}">Doctors</a>
+            <a href="{% url 'doctor:map' %}">Doctor Map</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'doctor:profile' %}">Profile</a>
+                <a href="{% url 'doctor:logout' %}">Logout</a>
+            {% else %}
+                <a href="{% url 'doctor:login' %}">Login</a>
+                <a href="{% url 'doctor:register' %}">Register</a>
+            {% endif %}
+        </nav>
+    </div>
+</header>
+
+<main>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    &copy; 2025 Doctor Finder
+</footer>
+
+</body>
+</html>

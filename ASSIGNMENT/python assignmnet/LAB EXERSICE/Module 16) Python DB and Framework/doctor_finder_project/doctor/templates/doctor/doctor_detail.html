@@ -1,0 +1,16 @@
+{% extends 'doctor/base.html' %}
+{% block content %}
+<h2>{{ doctor.name }} - {{ doctor.specialization }}</h2>
+<p>Location: {{ doctor.location }}</p>
+<p>Availability: {{ doctor.availability }}</p>
+<p>Email: {{ doctor.email }}</p>
+<p>Phone: {{ doctor.phone }}</p>
+
+{% if user.is_authenticated %}
+<form method="post" action="{% url 'doctor:doctor_delete' doctor.pk %}">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+</form>
+<a href="{% url 'doctor:doctor_edit' doctor.pk %}">Edit</a>
+{% endif %}
+{% endblock %}

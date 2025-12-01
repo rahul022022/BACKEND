@@ -1,0 +1,10 @@
+{% extends 'doctor/base.html' %}
+{% block content %}
+<h2>Pay Consultation Fees</h2>
+<p>This is a demo Paytm integration. In real use, this form would redirect to Paytm.</p>
+<form method="post">
+    {% csrf_token %}
+    <label>Amount (INR): <input type="number" name="amount" value="500" required></label><br>
+    <button type="submit">Pay with Paytm</button>
+</form>
+{% endblock %}
