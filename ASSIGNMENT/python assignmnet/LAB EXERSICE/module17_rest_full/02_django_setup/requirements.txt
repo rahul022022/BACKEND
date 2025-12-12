@@ -1,0 +1,8 @@
+Django==5.0.6
+djangorestframework==3.15.2
+djangorestframework-simplejwt==5.3.1
+django-allauth==0.63.3
+requests==2.32.3
+twilio==9.2.3
+sendgrid==6.11.0
+stripe==10.8.0
